@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,7 +30,7 @@ import java.util.UUID;
 public class TestActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int PERMISSIONS_REQUEST_READ_CONTACTS = 1;
 
-    public static final String PROVIDER_URI = "com.putao.ptlog.provider";
+    public static final String PROVIDER_URI = "com.putao.ptlogapp.provider";
     public static final String DB_NAME = "ptlog.db";
     public static final String TABLE_NAME = "t_log";
 
@@ -41,7 +44,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     Button add, delete, modify, query;
 
-    Uri uri = Uri.parse("content://com.putao.ptlog.provider/t_log");
+    Uri uri = Uri.parse("content://com.putao.ptlogapp.provider/t_log");
 
     private ContentResolver mContentResolver;
 
@@ -53,6 +56,23 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initView() {
+        Toast.makeText(getApplicationContext(), "com.putao.ptlogapp", Toast.LENGTH_SHORT).show();
+        findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText pkgName = (EditText) findViewById(R.id.et_packagename);
+                String packagename = pkgName.getText().toString().trim();
+                if (!TextUtils.isEmpty(packagename)) {
+                    uri = Uri.parse("content://" + packagename + ".provider/t_log");
+                    Toast.makeText(getApplicationContext(), packagename, Toast.LENGTH_SHORT).show();
+                } else {
+                    uri = Uri.parse("content://com.putao.paiband.en.provider/t_log");
+                    Toast.makeText(getApplicationContext(), "com.putao.paiband.en", Toast.LENGTH_SHORT).show();
+                }
+                Log.i("Provider_Uri", "Uri: " + uri);
+            }
+        });
+
         listView = (ListView) findViewById(R.id.mylistview);
         list = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
