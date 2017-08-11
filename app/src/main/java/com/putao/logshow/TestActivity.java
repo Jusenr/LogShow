@@ -24,6 +24,7 @@ import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,10 +58,12 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     public void initView() {
         Toast.makeText(getApplicationContext(), "com.putao.ptlogapp", Toast.LENGTH_SHORT).show();
+
+        final EditText pkgName = (EditText) findViewById(R.id.et_packagename);
+        pkgName.setEnabled(false);
         findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText pkgName = (EditText) findViewById(R.id.et_packagename);
                 String packagename = pkgName.getText().toString().trim();
                 if (!TextUtils.isEmpty(packagename)) {
                     uri = Uri.parse("content://" + packagename + ".provider/t_log");
@@ -69,6 +72,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                     uri = Uri.parse("content://com.putao.paiband.en.provider/t_log");
                     Toast.makeText(getApplicationContext(), "com.putao.paiband.en", Toast.LENGTH_SHORT).show();
                 }
+                pkgName.setEnabled(true);
+                pkgName.requestFocus();
                 Log.i("Provider_Uri", "Uri: " + uri);
             }
         });
@@ -126,9 +131,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                     list.clear();
                     while (cursor.moveToNext()) {
                         String idString = cursor.getString(cursor.getColumnIndex("id"));
-                        String nameString = cursor.getString(cursor.getColumnIndex("level"));
-                        String numString = cursor.getString(cursor.getColumnIndex("content"));
-                        list.add(idString + "  " + nameString + "\n" + numString);
+                        String levelString = cursor.getString(cursor.getColumnIndex("level"));
+                        String dateString = cursor.getString(cursor.getColumnIndex("date"));
+                        String contentString = cursor.getString(cursor.getColumnIndex("content"));
+                        if (!TextUtils.isEmpty(dateString)) {
+                            Date date = new Date(Long.valueOf(dateString) / 1000L);
+                            list.add(idString + "  " + levelString + "  " + date + "\n" + contentString);
+                        } else {
+                            list.add(idString + "  " + levelString + "\n" + contentString);
+                        }
                     }
                     cursor.close();
                     adapter.notifyDataSetChanged();
