@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,6 +54,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         initView();
     }
 
@@ -60,7 +62,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(getApplicationContext(), "com.putao.ptlogapp", Toast.LENGTH_SHORT).show();
 
         final EditText pkgName = (EditText) findViewById(R.id.et_packagename);
-        pkgName.setEnabled(false);
         findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,8 +73,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                     uri = Uri.parse("content://com.putao.paiband.en.provider/t_log");
                     Toast.makeText(getApplicationContext(), "com.putao.paiband.en", Toast.LENGTH_SHORT).show();
                 }
-                pkgName.setEnabled(true);
-                pkgName.requestFocus();
                 Log.i("Provider_Uri", "Uri: " + uri);
             }
         });
@@ -135,7 +134,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                         String dateString = cursor.getString(cursor.getColumnIndex("date"));
                         String contentString = cursor.getString(cursor.getColumnIndex("content"));
                         if (!TextUtils.isEmpty(dateString)) {
-                            Date date = new Date(Long.valueOf(dateString) / 1000L);
+                            Date date = new Date(Long.valueOf(dateString));
                             list.add(idString + "  " + levelString + "  " + date + "\n" + contentString);
                         } else {
                             list.add(idString + "  " + levelString + "\n" + contentString);
