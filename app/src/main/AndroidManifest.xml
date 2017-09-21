@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.putao.logshow">
+
+    <uses-sdk tools:overrideLibrary="com.appstore.verificationuilibrary,com.putao.minisdk,com.putao.ptx.ptuilib"/>
 
     <uses-permission android:name="com.putao.ptlog.provider"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>

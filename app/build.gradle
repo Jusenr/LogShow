@@ -4,18 +4,21 @@ apply plugin: 'com.neenbedankt.android-apt'
 android {
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
+
     defaultConfig {
         applicationId "com.putao.logshow"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++11"
             }
         }
+
     }
     buildTypes {
         release {
@@ -44,4 +47,27 @@ dependencies {
 
     apt 'com.zhy:mpermission-compiler:1.0.0'
     compile 'com.zhy:mpermission-api:1.0.0'
+
+    compile 'com.jusenr.android.library:androidtools:1.+'
+
+    compile 'com.putao.mobile:ptlog:1.+'
+    compile 'com.putao.mobile:gpush:1.+'
+
+    compile 'com.putao.appstore:com.putao.ptdatasdk:1.+'
+
+    compile 'com.putao.appstore:downloader:1.+'
+    compile 'com.putao.appstore:storebridge:0.+'
+
+    compile 'com.putao.commonuilibrary:appstorecommonlibrary:1.+'
+
+    compile 'com.putao.minidatasdk:minidatasdk:0.+'
+
+    compile 'com.putao.ptx:core:0.+'
+    compile 'com.putao.ptx:padsdk:1.+'
+    compile 'com.putao.ptx:pai:0.+'
+    compile 'com.putao.ptx:ptuilib:0.+'
+    compile 'com.putao.ptx:transport:0.+'
+    compile 'com.putao.ptx:transport-server:0.+'
+    compile 'com.putao.ptx:system-account:0.+'
+
 }

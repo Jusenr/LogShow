@@ -16,6 +16,21 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url 'http://maven.putao.io/nexus/content/repositories/putao/' }
+        maven { url 'http://maven.putao.io/nexus/content/repositories/PutaoCentral/' }
+
+        //aar依赖全局设置
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+subprojects {
+    configurations.all {
+        resolutionStrategy {
+//            force 'com.android.support:appcompat-v7:25.3.1'
+        }
     }
 }
 

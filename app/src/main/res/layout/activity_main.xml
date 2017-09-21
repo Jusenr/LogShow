@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,28 +7,98 @@
     android:layout_height="match_parent"
     tools:context="com.putao.logshow.MainActivity">
 
-    <RelativeLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        app:layout_goneMarginTop="10dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-
-        <TextView
-            android:id="@+id/sample_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Hello World!"/>
+    <LinearLayout
+        android:id="@+id/ll_btn_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/sample_text1"
+            android:id="@+id/btn_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Hello World!"
+            android:text="Hello"
             android:textAllCaps="false"/>
-    </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_text0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello0"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello1"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello2"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_btn_text0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_btn_text"
+        android:orientation="vertical">
+
+        <com.putao.ptx.widget.PTClearEditText
+            android:id="@+id/et_packagename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fadingEdge="none"
+            android:hint="input"
+            android:padding="10dp"
+            android:textColor="@android:color/holo_red_light"/>
+
+        <com.putao.ptx.widget.PTCircleProgressView
+            android:id="@+id/progress"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_btn_text0"
+        android:text="Hello3"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:id="@+id/sample_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_text3"
+        android:layout_marginTop="5dp"
+        android:text="Hello World!"/>
+
+    <com.putao.ptx.widget.PTDateWheelViewWarpper
+        android:id="@+id/warpper"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/sample_text"
+        android:background="@android:color/white"
+        app:childUseWeight="false"
+        app:disableAmOrPm="true"
+        app:is24HourFormat="true"
+        app:normalTextSize="4sp"
+        app:selectedTextSize="8sp"
+        app:showDay="true"
+        app:showHour="true"
+        app:showMinute="true"
+        app:showMonth="true"
+        app:showSecond="true"
+        app:showYear="true"/>
+
+</RelativeLayout>
