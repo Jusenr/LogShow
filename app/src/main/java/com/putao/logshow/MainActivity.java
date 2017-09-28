@@ -88,6 +88,24 @@ public class MainActivity extends AppCompatActivity {
                 ToastUtils.showAlertToast(mActivity, stringBuffer.toString());
             }
         });
+        findViewById(R.id.btn_text4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Test3Activity.class));
+            }
+        });
+        findViewById(R.id.btn_text5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        findViewById(R.id.btn_text6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     /**

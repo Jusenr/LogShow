@@ -67,19 +67,48 @@
             android:layout_margin="5dp"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_text3"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_0"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll_btn_text0"
-        android:text="Hello3"
-        android:textAllCaps="false"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello3"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello4"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello5"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_text6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello6"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_text3"
+        android:layout_below="@+id/ll_0"
         android:layout_marginTop="5dp"
         android:text="Hello World!"/>
 
